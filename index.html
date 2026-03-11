@@ -11,75 +11,57 @@
 :root{
   --sand:#f5f0e8;--cream:#faf8f4;--gold:#c9a96e;--gold-lt:#e8d5b0;
   --gold-dk:#a07840;--charcoal:#2a2520;--mid:#6b5f52;--light:#9e9188;
-  --border:#e2d9cc;--shadow:0 2px 20px rgba(42,37,32,.07);--r:12px;
+  --border:#e2d9cc;--r:12px;
 }
 html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--charcoal);overflow:hidden}
 .app{display:flex;flex-direction:column;height:100vh}
 
-/* HEADER */
 .header{background:var(--charcoal);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;border-bottom:1px solid rgba(201,169,110,.3)}
 .header-left{display:flex;align-items:center;gap:10px}
 .logo{width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold-dk));border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:#fff;flex-shrink:0}
 .brand{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;color:var(--gold-lt);line-height:1.1}
 .sub{font-size:9px;font-weight:300;color:var(--light);letter-spacing:1.4px;text-transform:uppercase}
-.header-right{display:flex;align-items:center;gap:8px}
 .status-pill{display:flex;align-items:center;gap:5px;background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.25);border-radius:20px;padding:3px 9px 3px 7px;font-size:10px;color:var(--gold-lt)}
-.dot{width:6px;height:6px;border-radius:50%;background:#5cb85c;box-shadow:0 0 5px rgba(92,184,92,.6);animation:pulse 2.5s ease-in-out infinite}
-.dot.paused{background:#e8874a;box-shadow:0 0 5px rgba(232,135,74,.6);animation:none}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85)}}
-.pause-btn{background:transparent;border:1px solid rgba(201,169,110,.35);border-radius:7px;color:var(--gold-lt);font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:.4px;text-transform:uppercase;padding:4px 10px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:5px}
-.pause-btn:hover{background:rgba(201,169,110,.15);border-color:var(--gold);color:var(--gold)}
-.pause-btn.is-paused{background:rgba(232,135,74,.15);border-color:rgba(232,135,74,.5);color:#e8874a}
+.dot{width:6px;height:6px;border-radius:50%;background:#5cb85c;animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.pause-btn{background:transparent;border:1px solid rgba(201,169,110,.35);border-radius:7px;color:var(--gold-lt);font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:.4px;text-transform:uppercase;padding:4px 10px;cursor:pointer;transition:all .2s}
+.pause-btn:hover{background:rgba(201,169,110,.15);border-color:var(--gold)}
+.pause-btn.paused{background:rgba(232,135,74,.15);border-color:rgba(232,135,74,.5);color:#e8874a}
 
-/* LEAD BAR */
 .lead-bar{background:var(--sand);border-bottom:1px solid var(--border);padding:9px 16px;display:flex;align-items:center;gap:10px;flex-shrink:0}
 .lead-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--gold-lt),var(--gold));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;color:var(--charcoal);flex-shrink:0}
-.lead-name{font-size:12px;font-weight:500;color:var(--charcoal)}
+.lead-name{font-size:12px;font-weight:500}
 .lead-meta{font-size:10px;color:var(--light)}
 
-/* PAUSED BANNER */
 .paused-banner{background:rgba(232,135,74,.1);border:1px solid rgba(232,135,74,.3);border-radius:7px;margin:8px 16px 0;padding:8px 13px;font-size:11px;color:#a05820;display:none;align-items:center;gap:8px}
 .paused-banner.show{display:flex}
 .paused-banner a{color:#c97830;cursor:pointer;text-decoration:underline;font-weight:500}
 
-/* CHAT */
-.chat-wrap{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth}
+.chat-wrap{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
 .chat-wrap::-webkit-scrollbar{width:3px}
 .chat-wrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 
-/* MESSAGES */
-.msg-row{display:flex;gap:8px;animation:fadeUp .25s ease forwards}
-@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.msg-row{display:flex;gap:8px;animation:fadeUp .2s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 .msg-row.user{flex-direction:row-reverse}
-.msg-av{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;margin-top:2px}
-.msg-av.ai{background:linear-gradient(135deg,var(--gold-lt),var(--gold));color:var(--charcoal);font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:600}
+.msg-av{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;margin-top:2px}
+.msg-av.ai{background:linear-gradient(135deg,var(--gold-lt),var(--gold));color:var(--charcoal);font-family:'Cormorant Garamond',serif;font-size:13px}
 .msg-av.user{background:var(--charcoal);color:var(--gold-lt)}
 .msg-content{max-width:80%;display:flex;flex-direction:column;gap:2px}
 .msg-row.user .msg-content{align-items:flex-end}
 .msg-sender{font-size:9px;font-weight:500;color:var(--light);letter-spacing:.5px;text-transform:uppercase;padding:0 3px}
-.bubble{padding:9px 13px;border-radius:var(--r);font-size:12.5px;line-height:1.55;word-break:break-word}
-.bubble.ai{background:#fff;border:1px solid var(--border);border-top-left-radius:3px;box-shadow:var(--shadow);color:var(--charcoal)}
+.bubble{padding:9px 13px;border-radius:var(--r);font-size:12.5px;line-height:1.55}
+.bubble.ai{background:#fff;border:1px solid var(--border);border-top-left-radius:3px;box-shadow:0 2px 12px rgba(42,37,32,.06)}
 .bubble.user{background:var(--charcoal);color:var(--gold-lt);border-top-right-radius:3px}
-.bubble.sys{background:rgba(201,169,110,.1);border:1px dashed var(--gold-lt);color:var(--mid);font-size:11px;font-style:italic;text-align:center;border-radius:var(--r);padding:7px 13px;width:100%}
+.bubble.sys{background:rgba(201,169,110,.08);border:1px dashed var(--gold-lt);color:var(--mid);font-size:11px;font-style:italic;text-align:center;border-radius:var(--r);padding:7px 13px;width:100%}
 .msg-time{font-size:9px;color:var(--light);padding:0 3px}
 
-/* TYPING */
-.typing-dots{display:flex;gap:3px;background:#fff;border:1px solid var(--border);border-radius:var(--r);border-top-left-radius:3px;padding:10px 13px;box-shadow:var(--shadow)}
+.typing-dots{display:flex;gap:3px;background:#fff;border:1px solid var(--border);border-radius:var(--r);border-top-left-radius:3px;padding:10px 13px;box-shadow:0 2px 12px rgba(42,37,32,.06)}
 .typing-dots span{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:bounce 1.2s ease-in-out infinite}
 .typing-dots span:nth-child(2){animation-delay:.2s}
 .typing-dots span:nth-child(3){animation-delay:.4s}
 @keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-4px);opacity:1}}
 
-/* SMS CONFIRM */
-.sms-card{background:#f0f7ff;border:1px solid #c8dff5;border-radius:9px;padding:10px 13px;font-size:11.5px;color:#2a4a6e}
-.sms-label{font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#6a9fd0;margin-bottom:5px;display:block}
-.sms-btns{display:flex;gap:6px;margin-top:8px}
-.btn-sm{font-family:'DM Sans',sans-serif;font-size:11px;padding:4px 10px;border-radius:6px;border:none;cursor:pointer;font-weight:500;transition:all .15s}
-.btn-sm.send{background:var(--charcoal);color:#fff}
-.btn-sm.send:hover{background:#1a1510}
-.btn-sm.discard{background:var(--border);color:var(--mid)}
-
-/* INPUT */
 .input-area{background:#fff;border-top:1px solid var(--border);padding:12px 16px;display:flex;flex-direction:column;gap:8px;flex-shrink:0}
 .quick-actions{display:flex;gap:5px;flex-wrap:wrap}
 .quick-btn{font-family:'DM Sans',sans-serif;font-size:10px;background:var(--cream);border:1px solid var(--border);border-radius:16px;padding:3px 9px;color:var(--mid);cursor:pointer;transition:all .15s;white-space:nowrap}
@@ -88,23 +70,15 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 .msg-input{flex:1;font-family:'DM Sans',sans-serif;font-size:12.5px;line-height:1.5;background:var(--cream);border:1px solid var(--border);border-radius:9px;padding:9px 13px;color:var(--charcoal);resize:none;outline:none;min-height:40px;max-height:110px;transition:border-color .2s}
 .msg-input:focus{border-color:var(--gold);background:#fff}
 .msg-input::placeholder{color:var(--light)}
-.msg-input:disabled{opacity:.5;cursor:not-allowed}
+.msg-input:disabled{opacity:.4;cursor:not-allowed}
 .send-btn{width:40px;height:40px;border-radius:9px;background:linear-gradient(135deg,var(--gold),var(--gold-dk));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;box-shadow:0 2px 8px rgba(160,120,64,.3)}
 .send-btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 4px 12px rgba(160,120,64,.4)}
 .send-btn:disabled{opacity:.4;cursor:not-allowed}
 .send-btn svg{width:16px;height:16px;fill:#fff}
 
-/* STATE SCREENS */
-.state-screen{display:none;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:24px;text-align:center;gap:12px}
-.state-screen.show{display:flex}
-.state-icon{font-size:36px}
-.state-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--charcoal)}
-.state-text{font-size:12px;color:var(--light);line-height:1.5;max-width:260px}
-
-/* SETUP OVERLAY */
 .setup-overlay{position:fixed;inset:0;background:rgba(42,37,32,.6);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;z-index:200;padding:16px}
-.setup-card{background:#fff;border-radius:14px;padding:24px;width:100%;max-width:380px;box-shadow:0 20px 50px rgba(42,37,32,.2)}
-.setup-card h2{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--charcoal);margin-bottom:3px}
+.setup-card{background:#fff;border-radius:14px;padding:24px;width:100%;max-width:360px;box-shadow:0 20px 50px rgba(42,37,32,.2)}
+.setup-card h2{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--charcoal);margin-bottom:4px}
 .setup-card p{font-size:11px;color:var(--light);margin-bottom:18px;line-height:1.5}
 .field{margin-bottom:12px}
 .field label{display:block;font-size:10px;font-weight:500;color:var(--mid);text-transform:uppercase;letter-spacing:.7px;margin-bottom:4px}
@@ -112,13 +86,12 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 .field input:focus{border-color:var(--gold);background:#fff}
 .field input::placeholder{color:var(--light);font-size:11px}
 .setup-btn{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold-dk));border:none;border-radius:9px;color:#fff;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:10px;cursor:pointer;margin-top:4px;box-shadow:0 3px 12px rgba(160,120,64,.3);transition:all .2s}
-.setup-btn:hover{transform:translateY(-1px);box-shadow:0 5px 16px rgba(160,120,64,.4)}
+.setup-btn:hover{transform:translateY(-1px)}
 .setup-hint{font-size:10px;color:var(--light);text-align:center;margin-top:10px;line-height:1.4}
 </style>
 </head>
 <body>
-<div class="app" id="app">
-
+<div class="app">
   <header class="header">
     <div class="header-left">
       <div class="logo">A</div>
@@ -127,313 +100,247 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
         <div class="sub">Lead Chat Assistant</div>
       </div>
     </div>
-    <div class="header-right">
-      <div class="status-pill">
-        <div class="dot" id="statusDot"></div>
-        <span id="statusLabel">AI Active</span>
-      </div>
-      <button class="pause-btn" id="pauseBtn" onclick="togglePause()">
-        <span id="pauseIcon">⏸</span><span id="pauseText">Pause</span>
-      </button>
+    <div style="display:flex;align-items:center;gap:8px">
+      <div class="status-pill"><div class="dot" id="statusDot"></div><span id="statusLabel">AI Active</span></div>
+      <button class="pause-btn" id="pauseBtn" onclick="togglePause()"><span id="pauseBtnTxt">⏸ Pause</span></button>
     </div>
   </header>
 
-  <div class="lead-bar" id="leadBar">
+  <div class="lead-bar">
     <div class="lead-avatar" id="leadAvatar">?</div>
     <div>
-      <div class="lead-name" id="leadName">Loading…</div>
-      <div class="lead-meta" id="leadMeta">Waiting for context</div>
+      <div class="lead-name" id="leadName">Loading lead…</div>
+      <div class="lead-meta" id="leadMeta">Waiting for FUB context</div>
     </div>
   </div>
 
-  <div class="paused-banner" id="pausedBanner">
-    ⏸ AI Bot is <strong style="margin:0 3px">paused</strong> for this lead.
-    <a onclick="togglePause()">Resume</a>
-  </div>
+  <div class="paused-banner" id="pausedBanner">⏸ AI Bot is <strong style="margin:0 3px">paused</strong> for this lead. <a onclick="togglePause()">Resume</a></div>
 
-  <!-- Normal chat UI -->
-  <div class="chat-wrap" id="chatWrap">
-    <div class="msg-row" id="welcomeRow">
-      <div class="msg-av ai">A</div>
-      <div class="msg-content">
-        <span class="msg-sender">AMS AI Assistant</span>
-        <div class="bubble ai">Loading lead context from Follow Up Boss…</div>
-      </div>
-    </div>
-  </div>
+  <div class="chat-wrap" id="chatWrap"></div>
 
-  <!-- State screens -->
-  <div class="state-screen" id="screenPersonNotFound">
-    <div class="state-icon">🔍</div>
-    <div class="state-title">Lead Not Found</div>
-    <div class="state-text">This person isn't in the AMS Realty system yet. They'll appear here once the AI bot has engaged with them.</div>
-  </div>
-  <div class="state-screen" id="screenUnauthorized">
-    <div class="state-icon">🔒</div>
-    <div class="state-title">Not Authorized</div>
-    <div class="state-text">You don't have access to the AMS Realty AI Chat. Please contact Anne to get set up.</div>
-  </div>
-  <div class="state-screen" id="screenAccountNotFound">
-    <div class="state-icon">⚙️</div>
-    <div class="state-title">Account Setup Needed</div>
-    <div class="state-text">The AMS Realty AI Chat hasn't been configured yet. Enter your n8n webhook URL to get started.</div>
-  </div>
-
-  <div class="input-area" id="inputArea">
+  <div class="input-area">
     <div class="quick-actions">
-      <button class="quick-btn" onclick="quickSend('Send a warm follow-up SMS to this lead')">📱 Send follow-up SMS</button>
-      <button class="quick-btn" onclick="quickSend('Summarize what we know about this lead')">📋 Lead summary</button>
-      <button class="quick-btn" onclick="quickSend('What neighborhoods should I recommend to this lead?')">🏡 Neighborhood advice</button>
-      <button class="quick-btn" onclick="togglePause()">⏸ Toggle AI pause</button>
+      <button class="quick-btn" onclick="q('Draft a warm follow-up SMS for this lead')">📱 Draft SMS</button>
+      <button class="quick-btn" onclick="q('Summarize what we know about this lead')">📋 Summary</button>
+      <button class="quick-btn" onclick="q('What neighborhoods fit this lead?')">🏡 Neighborhoods</button>
+      <button class="quick-btn" onclick="q('How should Anne approach this lead?')">💡 Strategy</button>
     </div>
     <div class="input-row">
-      <textarea class="msg-input" id="msgInput" placeholder="Ask AI or type a message…" rows="1"
-        onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
-      <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+      <textarea class="msg-input" id="msgInput" placeholder="Ask AI about this lead…" rows="1"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();send()}"
+        oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,110)+'px'"></textarea>
+      <button class="send-btn" id="sendBtn" onclick="send()">
         <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
       </button>
     </div>
   </div>
 </div>
 
-<!-- Setup overlay (shown when no webhook configured) -->
 <div class="setup-overlay" id="setupOverlay" style="display:none">
   <div class="setup-card">
     <h2>Connect AI Chat</h2>
-    <p>Enter your n8n webhook URL to activate the AI assistant. This is saved in your browser.</p>
+    <p>Enter your Anthropic API key to power the AI assistant. Stored locally in your browser only.</p>
     <div class="field">
-      <label>n8n Webhook URL</label>
-      <input type="url" id="setupWebhook" placeholder="https://amsrealtyaz.app.n8n.cloud/webhook/…"/>
+      <label>Anthropic API Key</label>
+      <input type="password" id="setupApiKey" placeholder="sk-ant-…"/>
     </div>
     <div class="field">
-      <label>Follow Up Boss API Key</label>
-      <input type="password" id="setupFubKey" placeholder="Your FUB API key"/>
+      <label>Follow Up Boss API Key (optional)</label>
+      <input type="password" id="setupFubKey" placeholder="fka_… (for SMS sending &amp; pause control)"/>
     </div>
-    <button class="setup-btn" onclick="saveSetup()">Save & Launch</button>
-    <div class="setup-hint">Your FUB API key is used only to send SMS and update tags directly from this chat window.</div>
+    <button class="setup-btn" onclick="saveSetup()">Save &amp; Launch</button>
+    <div class="setup-hint">Keys are saved in your browser and never sent anywhere except directly to Anthropic and FUB.</div>
   </div>
 </div>
 
 <script>
-// ── State ────────────────────────────────────────────────────
+// ── State ────────────────────────────────────────────────────────────────
 const S = {
-  webhookUrl: '',
-  fubApiKey: '',
+  apiKey: '',
+  fubKey: '',
   leadId: null,
-  leadData: null,
-  accountData: null,
-  userData: null,
+  lead: null,
   isPaused: false,
-  isTyping: false,
-  history: []
+  busy: false,
+  history: []   // [{role,content}]
 };
 
-// ── Boot: load config, then wait for FUB context ─────────────
+const SYSTEM = `You are the AI assistant for Anne Guttuso at AMS Realty AZ — a boutique luxury real estate team in Scottsdale, Paradise Valley, Arcadia & the East Valley.
+
+PERSONA: Warm, knowledgeable, encouraging, locally expert. You represent Anne's brand: professional, human, genuinely invested.
+
+MISSION: Qualify leads and guide them toward scheduling an in-person consultation at The Brokery Arcadia: 4546 N 40th St, Phoenix AZ 85018. Calendly: https://calendly.com/anne-amsrealtyaz/consultation. Website: www.amsrealtyaz.com
+
+NEIGHBORHOOD EXPERTISE:
+- Old Town Scottsdale: arts/dining/walkable, $500K–$3M+
+- North Scottsdale (DC Ranch, Silverleaf, Troon): gated/golf/mountain views, $1M–$20M+
+- McCormick Ranch / Gainey Ranch: lakes/golf/mature trees, $800K–$3M
+- Paradise Valley: Arizona's most exclusive, estate homes, $2M–$30M+, Camelback & Mummy Mountain
+- Arcadia: citrus trees/ranch homes/lush landscaping, $800K–$4M, The Brokery is here
+- South Scottsdale: investment/entry-level, proximity to Tempe/Old Town
+
+CONVERSATION GOALS (in order): build rapport → understand timeline → understand budget → location preference → motivation → offer appointment + Calendly
+
+Keep responses concise and warm. One question at a time. Use their name naturally.`;
+
+// ── Boot ─────────────────────────────────────────────────────────────────
 (function boot() {
   const cfg = JSON.parse(localStorage.getItem('ams_cfg') || '{}');
-  S.webhookUrl = cfg.webhookUrl || '';
-  S.fubApiKey  = cfg.fubApiKey  || '';
+  S.apiKey = cfg.apiKey || '';
+  S.fubKey = cfg.fubKey || '';
 
-  // The FUB SDK calls window.onEmbeddedAppLoad with decoded context
-  window.onEmbeddedAppLoad = function(context) {
-    handleFUBContext(context);
-  };
+  window.onEmbeddedAppLoad = function(ctx) { handleContext(ctx); };
 
-  // Fallback: manual ?context= param parsing (for testing)
-  const params = new URLSearchParams(window.location.search);
-  const rawCtx = params.get('context');
-  if (rawCtx) {
-    try {
-      const decoded = JSON.parse(atob(rawCtx.replace(/-/g,'+').replace(/_/g,'/')));
-      handleFUBContext(decoded);
-    } catch(e) {
-      showWelcome();
-    }
+  // URL param fallback for testing
+  const p = new URLSearchParams(location.search);
+  const raw = p.get('context');
+  if (raw) {
+    try { handleContext(JSON.parse(atob(raw.replace(/-/g,'+').replace(/_/g,'/')))); }
+    catch { showWelcome(); }
   } else {
-    // Wait briefly for SDK, then show welcome if nothing comes
-    setTimeout(() => {
-      if (!S.leadId) showWelcome();
-    }, 1500);
+    setTimeout(() => { if (!S.leadId) showWelcome(); }, 1200);
   }
 })();
 
-function handleFUBContext(ctx) {
+function handleContext(ctx) {
   if (!ctx) { showWelcome(); return; }
-
   const state = ctx.debugState || 'working';
-  S.accountData = ctx.account || null;
-  S.userData    = ctx.user    || null;
+  if (state === 'person_not_found') { return showSysMsg('🔍 This person isn\'t in the AMS system yet.'); }
+  if (state === 'unauthorized')     { return showSysMsg('🔒 You don\'t have access to this tool.'); }
 
-  // Handle debug states
-  if (state === 'person_not_found') {
-    showScreen('screenPersonNotFound'); return;
-  }
-  if (state === 'unauthorized') {
-    showScreen('screenUnauthorized'); return;
-  }
-  if (state === 'account_not_found') {
-    showScreen('screenAccountNotFound');
-    if (!S.webhookUrl) document.getElementById('setupOverlay').style.display = 'flex';
-    return;
-  }
+  const p = ctx.person;
+  if (!p) { showWelcome(); return; }
 
-  // working state — load person
-  const person = ctx.person;
-  if (!person) { showWelcome(); return; }
+  S.leadId = String(p.id);
+  S.lead   = p;
 
-  S.leadId   = String(person.id);
-  S.leadData = person;
-
-  // Update lead bar
-  const first   = person.firstName || person.name?.split(' ')[0] || 'Lead';
-  const last    = person.lastName  || person.name?.split(' ').slice(1).join(' ') || '';
-  const full    = person.name || `${first} ${last}`.trim();
-  const initials = ((first[0]||'') + (last[0]||'')).toUpperCase() || '?';
-  const phone   = person.phones?.[0]?.value || 'No phone';
-  const stage   = person.stage?.name || person.stage || 'New Lead';
+  const first   = p.firstName || (p.name||'').split(' ')[0] || 'Lead';
+  const last    = p.lastName  || (p.name||'').split(' ').slice(1).join(' ') || '';
+  const full    = p.name || `${first} ${last}`.trim();
+  const initials = ((first[0]||'')+(last[0]||'')).toUpperCase() || '?';
+  const phone   = p.phones?.[0]?.value || 'No phone';
+  const stage   = p.stage?.name || p.stage || 'New Lead';
 
   document.getElementById('leadAvatar').textContent = initials;
   document.getElementById('leadName').textContent   = full;
   document.getElementById('leadMeta').textContent   = `${phone} · ${stage}`;
 
-  // Check for AI Paused tag
-  const tags = Array.isArray(person.tags)
-    ? person.tags.map(t => (typeof t === 'string' ? t : t.name||'').toLowerCase())
-    : (person.tags||'').toLowerCase().split(',').map(t=>t.trim());
+  const tags = Array.isArray(p.tags)
+    ? p.tags.map(t => (typeof t==='string'?t:t.name||'').toLowerCase())
+    : (p.tags||'').toLowerCase().split(',').map(t=>t.trim());
   S.isPaused = tags.some(t => t==='ai paused'||t==='ai-paused');
   updatePauseUI();
 
-  // Clear welcome and show loaded state
   clearChat();
-  if (!S.webhookUrl) {
-    addSysMsg('⚙️ No webhook configured. Click the ⚙️ button to set up your n8n connection.');
-    document.getElementById('setupOverlay').style.display = 'flex';
-    return;
-  }
+  if (!S.apiKey) { document.getElementById('setupOverlay').style.display='flex'; return; }
 
-  addAIMsg(`Lead loaded: **${full}**\n\n• Phone: ${phone}\n• Stage: ${stage}${S.isPaused ? '\n\n⏸ AI Bot is currently **paused** for this lead.' : '\n\n✅ AI Bot is **active** — I\'ll auto-respond to their SMS replies.'}\n\nWhat would you like me to do?`);
+  addAI(`Lead loaded: **${full}**\n\n• Phone: ${phone}\n• Stage: ${stage}${S.isPaused?'\n\n⏸ AI Bot is **paused** for this lead.':'\n\n✅ AI Bot is **active** for this lead.'}\n\nWhat would you like me to help with?`);
 }
 
 function showWelcome() {
   clearChat();
-  addAIMsg('👋 Welcome to the AMS Realty AI Chat. Open a lead record in Follow Up Boss to get started.');
-  if (!S.webhookUrl) {
-    setTimeout(() => { document.getElementById('setupOverlay').style.display = 'flex'; }, 500);
-  }
+  addAI('👋 Welcome to AMS Realty AI Chat. Open a lead record in Follow Up Boss to get started.');
+  if (!S.apiKey) setTimeout(() => { document.getElementById('setupOverlay').style.display='flex'; }, 400);
 }
 
-// ── Send Message ─────────────────────────────────────────────
-async function sendMessage() {
-  const input = document.getElementById('msgInput');
-  const text  = input.value.trim();
-  if (!text || S.isTyping) return;
+// ── Send ─────────────────────────────────────────────────────────────────
+async function send() {
+  const el  = document.getElementById('msgInput');
+  const txt = el.value.trim();
+  if (!txt || S.busy) return;
+  if (!S.apiKey) { document.getElementById('setupOverlay').style.display='flex'; return; }
 
-  if (!S.webhookUrl) {
-    document.getElementById('setupOverlay').style.display = 'flex';
-    return;
-  }
-
-  addUserMsg(text, S.userData?.name || 'Anne');
-  input.value = '';
-  input.style.height = 'auto';
-  S.history.push({ role: 'user', content: text });
-  S.isTyping = true;
-
-  const typingEl = showTyping();
+  addUser(txt);
+  el.value = ''; el.style.height = 'auto';
+  S.history.push({role:'user', content: txt});
+  S.busy = true;
   document.getElementById('sendBtn').disabled = true;
-  document.getElementById('msgInput').disabled = true;
+  el.disabled = true;
+
+  const typing = showTyping();
+
+  // Build lead context for system prompt
+  const leadCtx = S.lead ? `\n\nCURRENT LEAD:\n- Name: ${S.lead.name||S.lead.firstName||'Unknown'}\n- Phone: ${S.lead.phones?.[0]?.value||'unknown'}\n- Stage: ${S.lead.stage?.name||S.lead.stage||'New Lead'}\n- Source: ${S.lead.source||'Direct'}\n- Tags: ${(Array.isArray(S.lead.tags)?S.lead.tags.map(t=>typeof t==='string'?t:t.name).join(', '):S.lead.tags)||'None'}` : '';
 
   try {
-    const payload = {
-      message: text,
-      source: 'fub_embed',
-      leadId: S.leadId,
-      agentName: S.userData?.name || 'Anne',
-      leadData: S.leadData ? {
-        id: S.leadData.id,
-        name: S.leadData.name || `${S.leadData.firstName||''} ${S.leadData.lastName||''}`.trim(),
-        firstName: S.leadData.firstName,
-        phone: S.leadData.phones?.[0]?.value,
-        email: S.leadData.emails?.[0]?.value,
-        stage: S.leadData.stage?.name || S.leadData.stage,
-        tags: S.leadData.tags
-      } : null,
-      history: S.history.slice(-8)
-    };
-
-    const resp = await fetch(S.webhookUrl, {
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      headers: {
+        'Content-Type':         'application/json',
+        'x-api-key':            S.apiKey,
+        'anthropic-version':    '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 600,
+        system: SYSTEM + leadCtx,
+        messages: S.history.slice(-12)
+      })
     });
 
-    typingEl.remove();
-    if (!resp.ok) throw new Error(`${resp.status}`);
+    typing.remove();
 
-    let data;
-    try { data = await resp.json(); } catch { data = { output: await resp.text() }; }
-
-    const reply = data.output || data.message || data.reply || data.text
-      || (typeof data === 'string' ? data : 'Message received — automation is running.');
-
-    S.history.push({ role: 'assistant', content: reply });
-    addAIMsg(reply);
-
-    // Detect SMS draft in reply
-    const smsMatch = reply.match(/[""]([^""]{20,})[""]/);
-    if (smsMatch && S.leadId && (reply.toLowerCase().includes('sms') || reply.toLowerCase().includes('text'))) {
-      addSmsConfirm(smsMatch[1], S.leadData?.phones?.[0]?.value);
+    if (!resp.ok) {
+      const err = await resp.json().catch(()=>({}));
+      throw new Error(err.error?.message || `HTTP ${resp.status}`);
     }
 
-  } catch(err) {
-    typingEl.remove();
-    addSysMsg(`⚠️ Could not reach webhook: ${err.message}`);
+    const data  = await resp.json();
+    const reply = data.content?.[0]?.text || 'No response.';
+    S.history.push({role:'assistant', content: reply});
+    addAI(reply);
+
+  } catch(e) {
+    typing.remove();
+    addSys(`⚠️ Error: ${e.message}`);
   } finally {
-    S.isTyping = false;
+    S.busy = false;
     document.getElementById('sendBtn').disabled = false;
-    document.getElementById('msgInput').disabled = false;
-    document.getElementById('msgInput').focus();
+    el.disabled = false;
+    el.focus();
   }
 }
 
-// ── Pause / Resume ───────────────────────────────────────────
-async function togglePause() {
-  if (!S.leadId) { addSysMsg('⚠️ No lead loaded.'); return; }
-  if (!S.fubApiKey) { addSysMsg('⚠️ No FUB API key. Add it in settings to enable pause control.'); return; }
+function q(t) { document.getElementById('msgInput').value=t; send(); }
 
-  const action  = S.isPaused ? 'resume' : 'pause';
-  const was     = S.isPaused;
-  S.isPaused    = !was;
+// ── Pause ─────────────────────────────────────────────────────────────────
+async function togglePause() {
+  if (!S.leadId) { addSys('No lead loaded.'); return; }
+  if (!S.fubKey) { addSys('⚠️ Add your FUB API key in settings to enable pause control.'); return; }
+
+  const action = S.isPaused ? 'resume' : 'pause';
+  const was = S.isPaused;
+  S.isPaused = !was;
   updatePauseUI();
 
   try {
     const headers = new Headers();
-    headers.set('Authorization', 'Basic ' + btoa(S.fubApiKey + ':'));
+    headers.set('Authorization', 'Basic ' + btoa(S.fubKey + ':'));
     headers.set('Content-Type', 'application/json');
 
-    const current = Array.isArray(S.leadData?.tags)
-      ? S.leadData.tags.map(t => typeof t === 'string' ? t : t.name||'')
-      : (S.leadData?.tags||'').split(',').map(t=>t.trim()).filter(Boolean);
+    const current = Array.isArray(S.lead?.tags)
+      ? S.lead.tags.map(t => typeof t==='string'?t:t.name||'')
+      : (S.lead?.tags||'').split(',').map(t=>t.trim()).filter(Boolean);
 
-    const newTags = action === 'pause'
-      ? [...new Set([...current, 'AI Paused'])]
-      : current.filter(t => t.toLowerCase() !== 'ai paused');
+    const newTags = action==='pause'
+      ? [...new Set([...current,'AI Paused'])]
+      : current.filter(t=>t.toLowerCase()!=='ai paused');
 
-    const r = await fetch(`https://api.followupboss.com/v1/people/${S.leadId}`, {
-      method: 'PUT', headers,
-      body: JSON.stringify({ tags: newTags })
+    const r = await fetch(`https://api.followupboss.com/v1/people/${S.leadId}`,{
+      method:'PUT', headers, body: JSON.stringify({tags: newTags})
     });
-    if (!r.ok) throw new Error(r.status);
-    if (S.leadData) S.leadData.tags = newTags;
+    if (!r.ok) throw new Error(`FUB ${r.status}`);
+    if (S.lead) S.lead.tags = newTags;
 
-    const name = S.leadData?.firstName || S.leadData?.name || 'this lead';
-    addSysMsg(action === 'pause'
+    const name = S.lead?.firstName || S.lead?.name || 'this lead';
+    addSys(action==='pause'
       ? `⏸ AI Bot PAUSED for ${name}. "AI Paused" tag added in FUB.`
       : `▶️ AI Bot RESUMED for ${name}. "AI Paused" tag removed.`);
-  } catch(err) {
+  } catch(e) {
     S.isPaused = was;
     updatePauseUI();
-    addSysMsg(`⚠️ Could not update FUB: ${err.message}`);
+    addSys(`⚠️ Could not update FUB: ${e.message}`);
   }
 }
 
@@ -441,138 +348,74 @@ function updatePauseUI() {
   const dot    = document.getElementById('statusDot');
   const label  = document.getElementById('statusLabel');
   const btn    = document.getElementById('pauseBtn');
-  const icon   = document.getElementById('pauseIcon');
-  const txt    = document.getElementById('pauseText');
+  const btntxt = document.getElementById('pauseBtnTxt');
   const banner = document.getElementById('pausedBanner');
   if (S.isPaused) {
-    dot.classList.add('paused'); label.textContent = 'AI Paused';
-    btn.classList.add('is-paused'); icon.textContent = '▶'; txt.textContent = 'Resume';
+    dot.style.background='#e8874a'; dot.style.animation='none';
+    label.textContent='AI Paused';
+    btn.classList.add('paused'); btntxt.textContent='▶ Resume';
     banner.classList.add('show');
   } else {
-    dot.classList.remove('paused'); label.textContent = 'AI Active';
-    btn.classList.remove('is-paused'); icon.textContent = '⏸'; txt.textContent = 'Pause';
+    dot.style.background='#5cb85c'; dot.style.animation='';
+    label.textContent='AI Active';
+    btn.classList.remove('paused'); btntxt.textContent='⏸ Pause';
     banner.classList.remove('show');
   }
 }
 
-// ── Setup ────────────────────────────────────────────────────
+// ── Setup ─────────────────────────────────────────────────────────────────
 function saveSetup() {
-  const wh = document.getElementById('setupWebhook').value.trim();
-  const fk = document.getElementById('setupFubKey').value.trim();
-  if (!wh) { alert('Please enter your n8n webhook URL.'); return; }
-  S.webhookUrl = wh; S.fubApiKey = fk;
-  localStorage.setItem('ams_cfg', JSON.stringify({ webhookUrl: wh, fubApiKey: fk }));
-  document.getElementById('setupOverlay').style.display = 'none';
+  const k = document.getElementById('setupApiKey').value.trim();
+  const f = document.getElementById('setupFubKey').value.trim();
+  if (!k) { alert('Please enter your Anthropic API key.'); return; }
+  S.apiKey = k; S.fubKey = f;
+  localStorage.setItem('ams_cfg', JSON.stringify({apiKey:k,fubKey:f}));
+  document.getElementById('setupOverlay').style.display='none';
   clearChat();
-  addAIMsg('✅ Connected! Ask me anything about this lead, or use the quick actions below.');
+  addAI('✅ Connected! Ask me anything about this lead, or use the quick actions below.');
 }
 
-// ── SMS Confirm ──────────────────────────────────────────────
-function addSmsConfirm(msg, phone) {
-  if (!phone) return;
-  const wrap = document.getElementById('chatWrap');
-  const div  = document.createElement('div');
-  div.className = 'msg-row';
-  div.innerHTML = `
-    <div class="msg-av ai" style="font-size:14px">📱</div>
-    <div class="msg-content" style="max-width:85%">
-      <span class="msg-sender">SMS Preview</span>
-      <div class="sms-card">
-        <span class="sms-label">📱 Ready to send to ${esc(phone)}</span>
-        <div>${esc(msg)}</div>
-        <div class="sms-btns">
-          <button class="btn-sm send" onclick="sendSms(${JSON.stringify(msg)}, this)">Send SMS</button>
-          <button class="btn-sm discard" onclick="this.closest('.msg-row').remove()">Discard</button>
-        </div>
-      </div>
-    </div>`;
-  wrap.appendChild(div);
-  scroll();
+// ── Chat helpers ──────────────────────────────────────────────────────────
+function clearChat() { document.getElementById('chatWrap').innerHTML=''; S.history=[]; }
+
+function addAI(text) {
+  const w=document.getElementById('chatWrap');
+  const d=document.createElement('div');
+  d.className='msg-row';
+  d.innerHTML=`<div class="msg-av ai">A</div><div class="msg-content"><span class="msg-sender">AMS AI</span><div class="bubble ai">${fmt(text)}</div><span class="msg-time">${now()}</span></div>`;
+  w.appendChild(d); scroll();
 }
 
-async function sendSms(msg, btn) {
-  if (!S.leadId || !S.fubApiKey) { alert('FUB API key required to send SMS.'); return; }
-  btn.disabled = true; btn.textContent = 'Sending…';
-  try {
-    const h = new Headers();
-    h.set('Authorization', 'Basic ' + btoa(S.fubApiKey + ':'));
-    h.set('Content-Type', 'application/json');
-    const r = await fetch(`https://api.followupboss.com/v1/people/${S.leadId}/textMessages`,
-      { method: 'POST', headers: h, body: JSON.stringify({ body: msg }) });
-    if (!r.ok) throw new Error(r.status);
-    btn.textContent = '✓ Sent!'; btn.style.background = '#3a7d44';
-    addSysMsg('✅ SMS sent via Follow Up Boss.');
-  } catch(e) {
-    btn.textContent = 'Failed'; btn.style.background = '#c0392b';
-    addSysMsg(`⚠️ SMS failed: ${e.message}`);
-  }
+function addUser(text) {
+  const w=document.getElementById('chatWrap');
+  const d=document.createElement('div');
+  d.className='msg-row user';
+  d.innerHTML=`<div class="msg-av user">A</div><div class="msg-content"><span class="msg-sender">You</span><div class="bubble user">${esc(text)}</div><span class="msg-time">${now()}</span></div>`;
+  w.appendChild(d); scroll();
 }
 
-// ── Helpers ──────────────────────────────────────────────────
-function showScreen(id) {
-  document.getElementById('chatWrap').style.display = 'none';
-  document.getElementById('inputArea').style.display = 'none';
-  document.getElementById(id).classList.add('show');
+function addSys(text) {
+  const w=document.getElementById('chatWrap');
+  const d=document.createElement('div');
+  d.className='msg-row';
+  d.innerHTML=`<div class="bubble sys">${text}</div>`;
+  w.appendChild(d); scroll();
 }
 
-function clearChat() {
-  document.getElementById('chatWrap').innerHTML = '';
-}
-
-function addAIMsg(text) {
-  const wrap = document.getElementById('chatWrap');
-  const d = document.createElement('div');
-  d.className = 'msg-row';
-  d.innerHTML = `<div class="msg-av ai">A</div>
-    <div class="msg-content">
-      <span class="msg-sender">AMS AI Assistant</span>
-      <div class="bubble ai">${fmt(text)}</div>
-      <span class="msg-time">${now()}</span>
-    </div>`;
-  wrap.appendChild(d); scroll();
-}
-
-function addUserMsg(text, name) {
-  const wrap = document.getElementById('chatWrap');
-  const d = document.createElement('div');
-  d.className = 'msg-row user';
-  d.innerHTML = `<div class="msg-av user">${(name||'A')[0].toUpperCase()}</div>
-    <div class="msg-content">
-      <span class="msg-sender">${esc(name||'You')}</span>
-      <div class="bubble user">${esc(text)}</div>
-      <span class="msg-time">${now()}</span>
-    </div>`;
-  wrap.appendChild(d); scroll();
-}
-
-function addSysMsg(text) {
-  const wrap = document.getElementById('chatWrap');
-  const d = document.createElement('div');
-  d.className = 'msg-row';
-  d.innerHTML = `<div class="bubble sys">${text}</div>`;
-  wrap.appendChild(d); scroll();
-}
+function showSysMsg(text) { clearChat(); addSys(text); }
 
 function showTyping() {
-  const wrap = document.getElementById('chatWrap');
-  const d = document.createElement('div');
-  d.className = 'msg-row';
-  d.innerHTML = `<div class="msg-av ai">A</div>
-    <div><div class="typing-dots"><span></span><span></span><span></span></div></div>`;
-  wrap.appendChild(d); scroll(); return d;
+  const w=document.getElementById('chatWrap');
+  const d=document.createElement('div');
+  d.className='msg-row';
+  d.innerHTML=`<div class="msg-av ai">A</div><div><div class="typing-dots"><span></span><span></span><span></span></div></div>`;
+  w.appendChild(d); scroll(); return d;
 }
 
-function quickSend(t) { document.getElementById('msgInput').value = t; sendMessage(); }
-function handleKey(e) { if (e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();} }
-function autoResize(el) { el.style.height='auto'; el.style.height=Math.min(el.scrollHeight,110)+'px'; }
-function scroll() { const w=document.getElementById('chatWrap'); requestAnimationFrame(()=>{w.scrollTop=w.scrollHeight;}); }
-function now() { return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}); }
-function esc(s='') { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function fmt(t) {
-  return esc(t)
-    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
-    .replace(/\n/g,'<br/>');
-}
+function scroll(){const w=document.getElementById('chatWrap');requestAnimationFrame(()=>{w.scrollTop=w.scrollHeight;})}
+function now(){return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}
+function esc(s=''){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function fmt(t){return esc(t).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br/>')}
 </script>
 </body>
 </html>
